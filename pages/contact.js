@@ -9,7 +9,7 @@ export default function contact() {
     event.preventDefault()
     const {Name, Email ,Msg} = event.target;
     const info = {Name : Name.value , Email : Email.value , Msg : Msg.value}
-    const response = await axios.post("https://coders-blogs.vercel.app/api/contactsPost",info);
+    const response = await axios.post("/api/contactsPost",info);
     if(response.data){
       alert("Message sended");
     }else{

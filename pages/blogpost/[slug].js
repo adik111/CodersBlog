@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import styles from '../../styles/Home.module.css'
@@ -25,8 +24,11 @@ export default function slug({myBlog, titel}) {
 }
 
 export async function getServerSideProps(context){
+  const baseURL = process.env.NODE_ENV === 'production'
+    ? `https://${context.req.headers.host}`  
+    : 'http://localhost:3000'; 
   const { slug } =  context.query;
-  const response = await axios.get(`https://coders-blogs.vercel.app/api/getblogs?slug=${slug}`);
+  const response = await axios.get(`${baseURL}/api/getblogs?slug=${slug}`);
   return{
     props : {myBlog : response.data , titel : slug }
   }

@@ -11,7 +11,7 @@ export default function blog({data, dirLenght}) {
   const [count, setCount] = useState(4);
   
   const fetchData = async () =>{
-    const response = await axios.get(`https://coders-blogs.vercel.app/api/blog/?count=${count+2}`);
+    const response = await axios.get(`/api/blog/?count=${count+2}`);
     setBlogData(response.data)
     setCount(count+2)
   }
@@ -57,8 +57,11 @@ export default function blog({data, dirLenght}) {
 }
 
 export async function getServerSideProps(context){
+  const baseURL = process.env.NODE_ENV === 'production'
+    ? `https://${context.req.headers.host}`  
+    : 'http://localhost:3000'; 
   const dirData= await fs.promises.readdir("blogposts");
-  const response = await axios.get("https://coders-blogs.vercel.app/api/blog/?count=4");
+  const response = await axios.get(`${baseURL}/api/blog/?count=4`);
   return{
     props : {data : response.data , dirLenght : dirData.length}
   }
