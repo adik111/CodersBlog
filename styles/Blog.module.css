@@ -1,0 +1,91 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .containerh1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .blogList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .blogItem {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  
+  .blogItem:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blogItem h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #0070f3;
+  }
+  
+  .blogItem p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .readMore {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0070f3;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .readMore:hover {
+    text-decoration: underline;
+  }
+
+  .submitBtn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitBtn:hover {
+    background-color: #005bb5;
+  }
+  
+  @media (max-width: 600px) {
+    .blogList {
+      grid-template-columns: 1fr;
+    }
+  
+    .blogList h1 {
+      font-size: 2rem;
+    }
+  
+    .blogList h2 {
+      font-size: 1.3rem;
+    }
+  
+    .blogList p {
+      font-size: 0.9rem;
+    }
+  }
+  
