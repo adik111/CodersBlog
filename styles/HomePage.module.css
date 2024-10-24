@@ -1,0 +1,123 @@
+/* General Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header Styles */
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav a {
+    margin-right: 15px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .searchBar input {
+    padding: 8px;
+    margin-right: 10px;
+  }
+  
+  .signIn {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* Hero Section Styles */
+  .hero {
+    /* background-color: #f4f4f4; */
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 60px 0;
+    color: white;
+    text-align: center;
+  }
+  
+  .heroTitle {
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .heroDescription {
+    color: #f5eded;
+    margin-bottom: 20px;
+  }
+  
+  .ctaButton {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 1rem;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ctaButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Blog Section Styles */
+  .featuredBlogs {
+    padding: 60px 0;
+  }
+  
+  .sectionTitle {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .blogGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .blogCard {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .blogTitle {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .blogDescription {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .readMore {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .readMore:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  

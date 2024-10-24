@@ -121,9 +121,13 @@
 }
 
 .blogItem{
-  max-width: 800px;
+  max-width: 60vw;
 }
 
 .blogItem h3{
   text-align: center;
+}
+
+.blogItem p{
+  text-align: justify;
 }
