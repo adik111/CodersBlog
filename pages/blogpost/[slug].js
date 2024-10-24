@@ -26,7 +26,7 @@ export default function slug({myBlog, titel}) {
 
 export async function getServerSideProps(context){
   const { slug } =  context.query;
-  const response = await axios.get(`http://localhost:3000/api/getblogs?slug=${slug}`);
+  const response = await axios.get(`https://coders-blogs.vercel.app/api/getblogs?slug=${slug}`);
   return{
     props : {myBlog : response.data , titel : slug }
   }

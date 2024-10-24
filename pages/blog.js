@@ -11,7 +11,7 @@ export default function blog({data, dirLenght}) {
   const [count, setCount] = useState(4);
   
   const fetchData = async () =>{
-    const response = await axios.get(`http:///localhost:3000/api/blog/?count=${count+2}`);
+    const response = await axios.get(`https://coders-blogs.vercel.app/api/blog/?count=${count+2}`);
     setBlogData(response.data)
     setCount(count+2)
   }
@@ -58,7 +58,7 @@ export default function blog({data, dirLenght}) {
 
 export async function getServerSideProps(context){
   const dirData= await fs.promises.readdir("blogposts");
-  const response = await axios.get("http://localhost:3000/api/blog/?count=4");
+  const response = await axios.get("https://coders-blogs.vercel.app/api/blog/?count=4");
   return{
     props : {data : response.data , dirLenght : dirData.length}
   }
