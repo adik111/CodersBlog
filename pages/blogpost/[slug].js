@@ -24,9 +24,7 @@ export default function slug({myBlog, titel}) {
 }
 
 export async function getServerSideProps(context){
-  const baseURL = process.env.NODE_ENV === 'production'
-    ? 'https://coders-blogs.vercel.app'
-    : 'http://localhost:3000'; 
+  const baseURL = process.env.API_URL;
   const { slug } =  context.query;
   const response = await axios.get(`${baseURL}/api/getblogs?slug=${slug}`);
   return{
