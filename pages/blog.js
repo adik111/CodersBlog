@@ -58,7 +58,7 @@ export default function blog({data, dirLenght}) {
 
 export async function getServerSideProps(context){
   const baseURL = process.env.NODE_ENV === 'production'
-    ? `https://${context.req.headers.host}`  
+    ? `https://coders-blogs.vercel.app`  
     : 'http://localhost:3000'; 
   const dirData= await fs.promises.readdir("blogposts");
   const response = await axios.get(`${baseURL}/api/blog/?count=4`);
