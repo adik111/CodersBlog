@@ -1,12 +1,8 @@
-import * as fs from 'fs';
+import mongoose from 'mongoose';
+import Blog from '../../models/BlogPost'
 
 export default async function handler(req, res) {
-  let blogData = [];
-    const dirData= await fs.promises.readdir("blogposts");
-    const data = dirData.slice(0,parseInt(req.query.count))
-    for(const item of data){
-      const myfile = await fs.promises.readFile(`blogposts/${item}`,"utf-8");
-        blogData.push(JSON.parse(myfile));
-    }
-    res.status(200).json(blogData);
-}
+    await mongoose.connect("mongodb+srv://aditya:kamate13579@projects.fvwgu.mongodb.net/CodersBlog?retryWrites=true&w=majority&appName=Projects")
+    const blogData = await Blog.find().limit(req.query.count);
+      res.status(200).json(blogData);
+  }

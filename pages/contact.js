@@ -8,7 +8,7 @@ export default function contact() {
   const handleSubmit = async (event) =>{
     event.preventDefault()
     const {Name, Email ,Msg} = event.target;
-    const info = {Name : Name.value , Email : Email.value , Msg : Msg.value}
+    const info = {name : Name.value , email : Email.value , msg : Msg.value}
     const response = await axios.post("/api/contactsPost",info);
     if(response.data){
       alert("Message sended");

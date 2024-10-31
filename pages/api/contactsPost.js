@@ -1,10 +1,16 @@
-import * as fs from 'fs';
+import mongoose from 'mongoose';
+import Contact from '../../models/Contact';
 
 export default async function handler(req, res) {
     if (req.method === 'POST'){
         try{
-        const data = await fs.promises.readdir("contactdata")
-        await fs.promises.appendFile(`contactdata/contact${data.length+1}.json`,JSON.stringify(req.body))
+            await mongoose.connect("mongodb+srv://aditya:kamate13579@projects.fvwgu.mongodb.net/CodersBlog?retryWrites=true&w=majority&appName=Projects")
+            let c = Contact({
+                name : req.body.name,
+                email : req.body.email,
+                msg : req.body.msg
+            })
+            c.save();
         res.status(200).json(1)
         }
         catch(e){

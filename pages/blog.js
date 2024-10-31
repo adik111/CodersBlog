@@ -4,17 +4,23 @@ import styles from '../styles/Blog.module.css'
 import axios from 'axios';
 import Link from 'next/link';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import * as fs from 'fs';
 
-export default function blog({data, dirLenght}) {
+export default function blog({data}) {
   const [blogData, setBlogData] = useState(data);
   const [count, setCount] = useState(4);
+  const [flag, setFlag] = useState(true);
   
   const fetchData = async () =>{
     const baseURL = process.env.API_URL;
     const response = await axios.get(`/api/blog/?count=${count+2}`);
     setBlogData(response.data)
-    setCount(count+2)
+    setCount(prevCount => {
+      const newCount = prevCount + 2;
+      if (newCount > response.data.length) {
+        setFlag(false);
+      }
+      return newCount;
+    })
   }
 
   return (
@@ -29,7 +35,7 @@ export default function blog({data, dirLenght}) {
           className={styles.blogList}
             dataLength={blogData.length}
             next={fetchData}
-            hasMore={blogData.length !== dirLenght}
+            hasMore={flag}
             loader={<h4>Loading...</h4>}
             endMessage={
               <p style={{ textAlign: "center" }}>
@@ -40,7 +46,7 @@ export default function blog({data, dirLenght}) {
             {blogData.length > 0 ? (
               blogData.map((blog, index) => (
                 <div key={index} className={styles.blogItem}>
-                  <h2>{blog.title}</h2>
+                  <h2>{blog.titel}</h2>
                   <p>{blog.desc.slice(0, 150)}...</p>
                   <Link href={`/blogpost/${blog.slug}`}>
                     <button className={styles.submitBtn}>Read More</button>
@@ -59,9 +65,8 @@ export default function blog({data, dirLenght}) {
 
 export async function getServerSideProps(context){
   const baseURL = process.env.API_URL;
-  const dirData= await fs.promises.readdir("blogposts");
   const response = await axios.get(`${baseURL}/api/blog/?count=4`);
   return{
-    props : {data : response.data , dirLenght : dirData.length}
+    props : {data : response.data}
   }
 }
